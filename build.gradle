@@ -13,7 +13,8 @@ targetCompatibility = JavaVersion.VERSION_17
 
 repositories {
     mavenCentral()
-    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+    jcenter()  // Add jcenter for additional dependencies
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }  // TestFX snapshot repository
 }
 
 checkstyle {
@@ -23,6 +24,9 @@ checkstyle {
 test {
     useJUnitPlatform()
     finalizedBy jacocoTestReport
+    systemProperty 'testfx.headless', 'true'
+    systemProperty 'prism.order', 'sw'
+    systemProperty 'prism.text', 't2k'
 }
 
 task coverage(type: JacocoReport) {
@@ -61,8 +65,15 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.7.4'
 
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: jUnitVersion
-
     testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: jUnitVersion
+    // TestFX Core
+    testImplementation group: 'org.testfx', name: 'testfx-core', version: '4.0.16-alpha'
+
+    // TestFX JUnit 5 Integration
+    testImplementation group: 'org.testfx', name: 'testfx-junit5', version: '4.0.16-alpha'
+
+    // Monocle for headless testing (CI environments)
+    testImplementation group: 'org.testfx', name: 'openjfx-monocle', version: 'jdk-9+181'
 }
 
 shadowJar {
