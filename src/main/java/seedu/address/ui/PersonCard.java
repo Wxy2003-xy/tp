@@ -9,6 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import seedu.address.model.person.Person;
+import seedu.address.model.tag.Tag;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -62,7 +63,10 @@ public class PersonCard extends UiPart<Region> {
         remark.setText(person.getRemark().value);
         birthday.setText(person.getBirthday().toString());
         person.getTags().stream()
-                .sorted(Comparator.comparing(tag -> tag.tagName)).forEach(tag -> {
+                .sorted(Comparator.<Tag, Boolean>comparing(tag -> !tag.tagName
+                                .equalsIgnoreCase("favourite")) // "favourite" comes first
+                        .thenComparing(tag -> tag.tagName.toLowerCase())) // then sort alphabetically
+                .forEach(tag -> {
                     Label tagLabel = new Label(tag.tagName);
                     // Check if the tag contains "favourite" and add a style class
                     if (tag.tagName.equalsIgnoreCase("favourite")) {
