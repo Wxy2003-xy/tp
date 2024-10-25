@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
 import seedu.address.model.person.Person;
 import seedu.address.model.tag.Tag;
 
@@ -44,10 +43,7 @@ public class PersonCard extends UiPart<Region> {
     private FlowPane tags;
     @FXML
     private Label remark;
-    @FXML
-    private Label birthday;
-    @FXML
-    private VBox history;
+
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -61,7 +57,6 @@ public class PersonCard extends UiPart<Region> {
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
         remark.setText(person.getRemark().value);
-        birthday.setText(person.getBirthday().toString());
         person.getTags().stream()
                 .sorted(Comparator.<Tag, Boolean>comparing(tag -> !tag.tagName
                                 .equalsIgnoreCase("favourite")) // "favourite" comes first
@@ -74,11 +69,5 @@ public class PersonCard extends UiPart<Region> {
                     }
                     tags.getChildren().add(tagLabel);
                 });
-        person.getHistory().getHistoryEntries().forEach((date, activities) -> {
-            StringBuilder historyText = new StringBuilder(date.toString() + ": \n");
-            historyText.append(String.join(", \n", activities));
-            Label historyLabel = new Label(historyText.toString());
-            history.getChildren().add(historyLabel);
-        });
     }
 }
