@@ -80,7 +80,7 @@ public class AddPropertyCommandTest {
                 outOfBoundIndex, "123 Main St", "Central", "Condo",
                 85.0, 2, 2, 500000.0);
 
-        assertCommandFailure(command, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(command, model, Messages.PERSON_INDEX_PROVIDED_IS_OUT_OF_BOUND);
     }
 
     @Test
@@ -94,7 +94,7 @@ public class AddPropertyCommandTest {
                 outOfBoundIndex, "123 Main St", "Central", "Condo",
                 85.0, 2, 2, 500000.0);
 
-        assertCommandFailure(command, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(command, model, Messages.PERSON_INDEX_PROVIDED_IS_OUT_OF_BOUND);
     }
 
     @Test

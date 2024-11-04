@@ -57,7 +57,7 @@ public class FavouriteCommandTest {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         FavouriteCommand favouriteCommand = new FavouriteCommand(outOfBoundIndex);
 
-        assertCommandFailure(favouriteCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(favouriteCommand, model, Messages.PERSON_INDEX_PROVIDED_IS_OUT_OF_BOUND);
     }
 
     @Test
@@ -87,7 +87,7 @@ public class FavouriteCommandTest {
 
         FavouriteCommand favouriteCommand = new FavouriteCommand(outOfBoundIndex);
 
-        assertCommandFailure(favouriteCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(favouriteCommand, model, Messages.PERSON_INDEX_PROVIDED_IS_OUT_OF_BOUND);
     }
 
     @Test

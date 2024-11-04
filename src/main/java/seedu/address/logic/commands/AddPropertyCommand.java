@@ -104,7 +104,7 @@ public class AddPropertyCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         List<Person> lastShownList = model.getFilteredPersonList();
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.PERSON_INDEX_PROVIDED_IS_OUT_OF_BOUND);
         }
 
         Property newProperty = Property.of(address, town, propertyType,

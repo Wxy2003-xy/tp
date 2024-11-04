@@ -95,7 +95,7 @@ public class BirthdayCommandTest {
     public void execute_invalidPersonIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         BirthdayCommand birthdayCommand = new BirthdayCommand(outOfBoundIndex, new Birthday(VALID_BIRTHDAY_BOB));
-        assertCommandFailure(birthdayCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(birthdayCommand, model, Messages.PERSON_INDEX_PROVIDED_IS_OUT_OF_BOUND);
     }
 
     /**
@@ -109,7 +109,7 @@ public class BirthdayCommandTest {
         // ensures that outOfBoundIndex is still in bounds of address book list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getPersonList().size());
         BirthdayCommand birthdayCommand = new BirthdayCommand(outOfBoundIndex, new Birthday(VALID_BIRTHDAY_BOB));
-        assertCommandFailure(birthdayCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(birthdayCommand, model, Messages.PERSON_INDEX_PROVIDED_IS_OUT_OF_BOUND);
     }
 
     @Test

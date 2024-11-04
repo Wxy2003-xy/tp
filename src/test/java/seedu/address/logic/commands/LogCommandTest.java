@@ -66,7 +66,7 @@ public class LogCommandTest {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         LogCommand logCommand = new LogCommand(outOfBoundIndex, VALID_LOG_MESSAGE);
 
-        assertCommandFailure(logCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(logCommand, model, Messages.PERSON_INDEX_PROVIDED_IS_OUT_OF_BOUND);
     }
 
     @Test
@@ -78,7 +78,7 @@ public class LogCommandTest {
 
         LogCommand logCommand = new LogCommand(outOfBoundIndex, VALID_LOG_MESSAGE);
 
-        assertCommandFailure(logCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(logCommand, model, Messages.PERSON_INDEX_PROVIDED_IS_OUT_OF_BOUND);
     }
 
     @Test
